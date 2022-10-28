@@ -18,7 +18,7 @@ export class Command extends BaseCommand implements IBaseCommand {
       const g = await guild;
       await g.members.unban(member, message);
     }
-    return await interaction.reply(`unbanned <@${member}>`);
+    return await interaction.reply(`unbanned <@${member.id}>`);
   };
   data = (new SlashCommandBuilder)
     .setName('universalunban')
