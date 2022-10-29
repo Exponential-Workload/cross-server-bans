@@ -13,12 +13,16 @@ export class Command extends BaseCommand implements IBaseCommand {
   async execute(interaction: ChatInputCommandInteraction<CacheType>) {
     const member = interaction.options.getUser('member');
     const message = interaction.options.getString('message');
-    await interaction.guild.members.unban(member, message);
+    const mapped = (await client.guilds.fetch()).map(v => v.fetch());
+    for (const guild of mapped) {
+      const g = await guild;
+      await g.members.unban(member, message);
+    }
     return await interaction.reply(`unbanned <@${member.id}>`);
   };
   data = (new SlashCommandBuilder)
-    .setName('unban')
-    .setDescription('Unbans a user from this guild')
+    .setName('universalunban')
+    .setDescription('Unbans a user from all fluxus guilds')
     .addUserOption(o=>o.setName('member').setDescription('Member to ban')
       .setRequired(true))
     .addStringOption((option) =>
