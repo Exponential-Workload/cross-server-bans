@@ -14,11 +14,15 @@ export class Command extends BaseCommand implements IBaseCommand {
     const member = interaction.options.getUser('member');
     const message = interaction.options.getString('message');
     const mapped = (await client.guilds.fetch()).map(v => v.fetch());
+    await interaction.reply('unbanning...');
+    let i = 0;
     for (const guild of mapped) {
+      i++;
       const g = await guild;
       await g.members.unban(member, message);
+      await interaction.editReply(`unbanning... (${i} of ${mapped.length})`);
     }
-    return await interaction.reply(`unbanned <@${member.id}>`);
+    return await interaction.editReply(`unbanned <@${member.id}>`);
   };
   data = (new SlashCommandBuilder)
     .setName('universalunban')
