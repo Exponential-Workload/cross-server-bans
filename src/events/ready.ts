@@ -33,6 +33,8 @@ import { DiscordClient } from '../classes/discord';
  * Should only fire once!
  */
 export const once = true;
+
+const srcDir = __dirname+'/..'
 /*
   This is an event that gets triggered on ready.
  */
@@ -41,8 +43,8 @@ export const execute = (client: DiscordClient) => {
     commands, application, buttons, modals
   } = client;
 
-  ensureDirSync('./src/commands');
-  const commandFiles = readdirSync('./src/commands').filter(
+  ensureDirSync(srcDir+'/commands');
+  const commandFiles = readdirSync(srcDir+'/commands').filter(
     (file: any) => file.endsWith('.ts') || file.endsWith('.js')
   );
   for (const file of commandFiles) {
@@ -52,8 +54,8 @@ export const execute = (client: DiscordClient) => {
 
   const commandData = commands.map((i) => i.data);
 
-  ensureDirSync('./src/buttons');
-  const buttonFiles = readdirSync('./src/buttons').filter(
+  ensureDirSync(srcDir+'/buttons');
+  const buttonFiles = readdirSync(srcDir+'/buttons').filter(
     (file: any) => file.endsWith('.ts') || file.endsWith('.js')
   );
   for (const file of buttonFiles) {
@@ -61,8 +63,8 @@ export const execute = (client: DiscordClient) => {
     buttons.set(interaction.name, interaction);
   }
 
-  ensureDirSync('./src/modals');
-  const modalFiels = readdirSync('./src/modals').filter(
+  ensureDirSync(srcDir+'/modals');
+  const modalFiels = readdirSync(srcDir+'/modals').filter(
     (file: any) => file.endsWith('.ts') || file.endsWith('.js')
   );
   for (const file of modalFiels) {

@@ -42,7 +42,7 @@ client.commands = new Collection;
 client.buttons = new Collection;
 client.modals = new Collection;
 
-const eventFiles = readdirSync('./src/events').filter(
+const eventFiles = readdirSync(__dirname+'/events').filter(
   (file: any) => file.endsWith('.ts') || file.endsWith('.js')
 );
 
