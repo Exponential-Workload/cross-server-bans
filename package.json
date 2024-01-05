@@ -8,12 +8,13 @@
     "start": "node -r ts-node/register ./src/index.ts",
     "dev": "nodemon",
     "update": "ts-node src/commands/index.ts",
-    "build": "tsc",
+    "build": "esbuild `find src \( -name '*.ts' -o -name '*.tsx' \)` --outdir=dist --minify --packages=external --sourcemap --format=cjs",
     "bundle": "parcel build",
     "run": "node dist/index.js",
     "lint": "eslint src environment.ts",
     "lint:fix": "eslint src environment.ts --fix"
   },
+  "type": "commonjs",
   "author": "expdani & Expo",
   "license": "MIT",
   "dependencies": {
@@ -22,12 +23,13 @@
     "discord-api-types": "^0.36.3",
     "discord.js": "^14.6.0",
     "dotenv": "^16.0.3",
-    "fs-extra": "^10.1.0",
-    "ts-node": "^10.9.1",
-    "tslib": "^2.4.0",
-    "typescript": "^4.8.4"
+    "fs-extra": "^10.1.0"
   },
   "devDependencies": {
+    "ts-node": "^10.9.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.8.4",
+    "esbuild": "^0.19.11",
     "@parcel/core": "^2.7.0",
     "@parcel/transformer-typescript-types": "^2.7.0",
     "@types/fs-extra": "^9.0.13",
