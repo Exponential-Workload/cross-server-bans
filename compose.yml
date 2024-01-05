@@ -1,6 +1,7 @@
 version: '3'
 services:
   cross-server-bans:
+    restart: unless-stopped
     build:
       context: .
       dockerfile: Dockerfile
