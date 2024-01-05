@@ -8,7 +8,7 @@
     "start": "node -r ts-node/register ./src/index.ts",
     "dev": "nodemon",
     "update": "ts-node src/commands/index.ts",
-    "build": "esbuild `find src \( -name '*.ts' -o -name '*.tsx' \)` --outdir=dist --minify --packages=external --sourcemap --format=cjs",
+    "build": "esbuild `find src \\( -name '*.ts' -o -name '*.tsx' \\)` --outdir=dist --minify --packages=external --sourcemap --format=cjs",
     "bundle": "parcel build",
     "run": "node dist/index.js",
     "lint": "eslint src environment.ts",
