@@ -27,7 +27,7 @@ import { readdirSync } from 'fs';
 import {
   Collection, DiscordAPIError, GatewayIntentBits
 } from 'discord.js';
-import { env } from '../environment';
+import { env } from './environment';
 import { DiscordClient } from './classes/discord';
 import Exception from './exceptions/Exception';
 import NotFoundException from './exceptions/NotFoundException';
